@@ -1,0 +1,33 @@
+Name: PR_Branch_Workflow
+SchemaVersion: "1.0"
+
+# Optional - Set automatic triggers.
+Triggers:
+  - Type: PULLREQUEST
+    Branches:
+      - main
+    Events:
+      - OPEN
+      - REVISION
+
+# Required - Define action configurations.
+Actions:
+  DeployAWSCloudFormationstack_7c:
+    Identifier: aws/cfn-deploy@v1
+    Configuration:
+      parameter-overrides: KeyName=testKey,SSHLocation=54.10.10.2/32,WebServerInstanceType=t2.micro
+      capabilities: CAPABILITY_IAM,CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND
+      no-execute-changeset: "1"
+      template: VPC_AutoScaling_With_Public_IPs.template
+      region: us-west-2
+      name: PreProdEnvStack
+    Timeout: 10
+    Environment:
+      Connections:
+        - Role: pr_branch_IAM_role
+          Name: "012345678901"
+      Name: PreProdEnv
+    Inputs:
+      Sources:
+        - WorkflowSource
+

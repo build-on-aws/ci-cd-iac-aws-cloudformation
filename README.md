@@ -1,11 +1,7 @@
-## My Project
+## Setup CodeCatalyst for CloudFormation 
 
-TODO: Fill this README out!
-
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
+Sample code repo to set up Amazon CodeCatalyst with CloudFormation and using workflows to set up a CI/CD pipeline. It forms the base of the following tutorials:
+* [Build a CI/CD pipeline to improve your IaC with CloudFormation](https://buildon.aws/tutorials/build-ci-cd-pipeline-iac-cloudformation)
 
 ## Security
 
@@ -14,4 +10,3 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
-
